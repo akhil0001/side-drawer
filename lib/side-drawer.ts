@@ -1,3 +1,4 @@
+// @ts-ignore
 import style from "./side-drawer.css";
 
 declare var html: any;

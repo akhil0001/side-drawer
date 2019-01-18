@@ -11,12 +11,7 @@
     "sourceMap": true,
     "jsx": "react",
     "jsxFactory": "h",
-    "allowJs": false,
-    "plugins": [
-      {
-        "name": "typescript-lit-html-plugin"
-      }
-    ]
+    "allowJs": false
   },
   "include": ["lib"],
   "exclude": ["node_modules"]
