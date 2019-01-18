@@ -1,15 +1,13 @@
 // @ts-ignore
-import style from "./side-drawer.css";
+import style from "./style.css";
+// @ts-ignore
+import template from "./template.html";
 
-// declare var html: any;
-
-let tmpl = document.createElement("template");
-tmpl.innerHTML = `
-  <style>
-    ${style}
-  </style>
-  <div class="container"><slot></slot></div>
-`;
+// using a template so it only needs to be parsed once, whereas setting
+// innerHTML directly in the custom element ctor means the HTML would get parsed
+// for every custom element on the page
+const tmpl = document.createElement("template");
+tmpl.innerHTML = `<style>${style}</style>${template}`;
 
 export class SideDrawer extends HTMLElement {
   constructor() {

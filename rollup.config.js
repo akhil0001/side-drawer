@@ -2,6 +2,7 @@ import autoprefixer from "autoprefixer";
 import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
+import string from "rollup-plugin-string";
 
 const esm = {
   plugins: [
@@ -13,6 +14,9 @@ const esm = {
       sourceMap: true,
       extensions: [".css"],
       inject: false
+    }),
+    string({
+      include: "**/template.html"
     })
   ],
   input: "lib/side-drawer.ts",
@@ -32,6 +36,9 @@ const iife = {
       sourceMap: true,
       extensions: [".css"],
       inject: false
+    }),
+    string({
+      include: "**/template.html"
     })
   ],
   input: "lib/side-drawer.ts",
@@ -53,6 +60,9 @@ const iifeMin = {
       extensions: [".css"],
       inject: false,
       minimize: true
+    }),
+    string({
+      include: "**/template.html"
     }),
     terser({
       compress: { ecma: 6 }
