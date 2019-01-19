@@ -16,6 +16,33 @@ export class SideDrawer extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
     shadowRoot.appendChild(tmpl.content.cloneNode(true));
   }
+
+  get open() {
+    return this.hasAttribute("open");
+  }
+
+  set open(isOpen) {
+    if (isOpen) {
+      this.setAttribute("open", "");
+    } else {
+      this.removeAttribute("open");
+    }
+  }
+
+  static get observedAttributes() {
+    return ["open"];
+  }
+
+  attributeChangedCallback(_name: string, _oldValue: any, _newValue: any) {
+    // When the drawer is closed, update keyboard/screen reader behavior.
+    if (!this.open) {
+      this.setAttribute("tabindex", "-1");
+      this.setAttribute("aria-disabled", "true");
+    } else {
+      this.setAttribute("tabindex", "0");
+      this.setAttribute("aria-disabled", "false");
+    }
+  }
 }
 
 customElements.define("side-drawer", SideDrawer);

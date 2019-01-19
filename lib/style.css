@@ -1,12 +1,20 @@
 :host {
-  height: 100vh;
   background-color: #ffffff;
-  width: 250px; /* TODO: set this back to 0 */
-  max-width: 500px;
-  position: fixed;
   z-index: 1;
-  top: 0;
-  left: 0;
   overflow-x: hidden;
   transition: 0.5s;
+  height: 100vh;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+:host([open]) {
+  width: var(--side-drawer-width, 250px);
+}
+
+::slotted(div) {
+  padding: 12px 12px;
+  width: var(--side-drawer-width, 250px);
 }
