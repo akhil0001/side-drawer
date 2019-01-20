@@ -1,20 +1,47 @@
 :host {
   background-color: #ffffff;
-  z-index: 1;
-  overflow-x: hidden;
-  transition: 0.5s;
-  height: 100vh;
-  width: 0;
+  z-index: 3;
+  width: var(--side-drawer-width, 250px);
   position: fixed;
   top: 0;
-  left: 0;
+  left: calc(-1 * var(--side-drawer-width, 250px));
+  transition: 0.5s;
+  display: none;
 }
 
 :host([open]) {
-  width: var(--side-drawer-width, 250px);
+  left: 0;
+  display: block;
 }
 
-::slotted(div) {
-  padding: 12px 12px;
+:host([open]) #fs {
+  display: block;
+  opacity: var(--side-drawer-negative-space-opacity, 0.5);
+}
+
+:host([open]) #dc {
+  display: block;
+}
+
+#dc {
+  display: none;
   width: var(--side-drawer-width, 250px);
+  height: 100vh;
+  overflow-x: hidden;
+  z-index: 2;
+  transition: inherit;
+}
+
+#fs {
+  opacity: 0;
+  display: none;
+
+  transition: var(--side-drawer-negative-space-transition, 0.5s);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #000000;
 }
