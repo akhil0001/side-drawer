@@ -1,47 +1,32 @@
 :host {
-  background-color: #ffffff;
-  z-index: 3;
-  width: var(--side-drawer-width, 250px);
   position: fixed;
-  top: 0;
-  left: calc(-1 * var(--side-drawer-width, 250px));
-  transition: 0.5s;
-  display: none;
-}
-
-:host([open]) {
-  left: 0;
-  display: block;
-}
-
-:host([open]) #fs {
-  display: block;
-  opacity: var(--side-drawer-negative-space-opacity, 0.5);
-}
-
-:host([open]) #dc {
-  display: block;
-}
-
-#dc {
-  display: none;
-  width: var(--side-drawer-width, 250px);
+  z-index: 99;
+  /* width: 100vw; */
   height: 100vh;
-  overflow-x: hidden;
-  z-index: 2;
-  transition: inherit;
-}
-
-#fs {
-  opacity: 0;
-  display: none;
-
-  transition: var(--side-drawer-negative-space-transition, 0.5s);
-  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  z-index: 1;
-  background-color: #000000;
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* display: grid;
+  grid-template-areas: "d fs";
+  grid-template-columns: var(--side-drawer-width, 300px) auto; */
+  width: var(--side-drawer-width, 300px);
+}
+
+:host([open]) {
+  transform: none;
+}
+
+#d {
+  /* grid-area: "d"; */
+  background-color: var(--side-drawer-background-color, #ffffff);
+  height: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+}
+
+#fs {
+  grid-area: "fs";
 }
