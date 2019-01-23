@@ -27,8 +27,13 @@
 
       side-drawer {
         background-color: var(--secondary-accent-color);
+        color: white;
         /* border-top-right-radius: 10%;
         border-bottom-right-radius: 10%; */
+      }
+
+      .drawer-sample-container {
+        padding: 16px;
       }
 
       html body {
@@ -74,20 +79,6 @@
       main {
         width: 100%;
         max-width: 1280px;
-      }
-
-      .code-container {
-        background: var(--code-bg-color);
-        color: var(--code-fg-color);
-        overflow-x: scroll;
-        max-width: 600px;
-        border: 1px solid var(--secondary-bg-color);
-      }
-
-      pre {
-        font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono",
-          monospace;
-        font-size: 95%;
       }
 
       section {
@@ -190,23 +181,6 @@
         fill: #00ab47 !important;
         width: 15px;
         height: 11px;
-      }
-
-      .demo-section {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 28px 10%;
-        border-top: 2px solid var(--secondary-accent-color);
-      }
-
-      .demo {
-        padding: 37px 0;
-        width: 100%;
-      }
-
-      .demo .wc-container {
-        padding: 28px 0;
       }
 
       .github-btn {
@@ -372,76 +346,13 @@
           </button>
         </a>
       </section>
-
-      <section class="demo-section">
-        <h2>Example Usage</h2>
-        <div class="demo">
-          <h3>Listening to open/close events</h3>
-          <div class="wc-container">
-            <wc-menu-button id="myButton"></wc-menu-button>
-          </div>
-          <div class="code-container">
-            <pre>
-  &lt;wc-menu-button id="myButton"&gt;&lt;/wc-menu-button&gt;
-  ...
-  &lt;script&gt;
-    const myMenuIcon = document.querySelector("#myButton");
-    if (!!myMenuIcon) {
-      myMenuIcon.addEventListener("opened", ev => {
-        console.log("menu was opened");
-      });
-      myMenuIcon.addEventListener("closed", ev => {
-        console.log("menu was closed");
-      });
-    }
-  &lt;/script&gt;
-          </pre
-            >
-          </div>
-        </div>
-        <div class="demo">
-          <h3>Custom color</h3>
-          <div class="wc-container">
-            <wc-menu-button class="demo-color"></wc-menu-button>
-          </div>
-          <div class="code-container">
-            <pre>
-  &lt;style&gt;
-    :root {
-      --wc-menu-button-color: orange;
-    }
-  &lt;/style&gt;
-  ...
-  &lt;wc-menu-button&gt;&lt;/wc-menu-button&gt;
-          </pre
-            >
-          </div>
-        </div>
-        <div class="demo">
-          <h3>Custom size and hover opacity</h3>
-          <div class="wc-container">
-            <wc-menu-button
-              class="demo-size demo-hover-opacity"
-            ></wc-menu-button>
-          </div>
-          <div class="code-container">
-            <pre>
-  &lt;style&gt;
-    :root {
-      --wc-menu-button-width: 67px;
-      --wc-menu-button-hover-opacity: 1;
-    }
-  &lt;/style&gt;
-  ...
-  &lt;wc-menu-button&gt;&lt;/wc-menu-button&gt;
-          </pre
-            >
-          </div>
-        </div>
-      </section>
     </main>
 
-    <side-drawer id="drawer"><div>This is the drawer!</div></side-drawer>
+    <side-drawer id="drawer"
+      ><div class="drawer-sample-container">
+        This is the drawer!
+      </div></side-drawer
+    >
 
     <script>
       function handleBodyLoad() {
