@@ -96,7 +96,9 @@ export class SideDrawer extends HTMLElement {
       } else {
         this.setAttribute("tabindex", "0");
         this.setAttribute("aria-disabled", "false");
-        this.focus();
+        this.focus({
+          preventScroll: true
+        });
         this.dispatchEvent(
           new CustomEvent("open", {
             bubbles: true
