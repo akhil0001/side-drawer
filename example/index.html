@@ -26,14 +26,18 @@
       }
 
       side-drawer {
-        background-color: var(--secondary-accent-color);
+        background-color: var(--secondary-fg-color);
         color: white;
         /* border-top-right-radius: 10%;
         border-bottom-right-radius: 10%; */
       }
 
       .drawer-sample-container {
-        padding: 16px;
+        height: 100%;
+        padding: 21px;
+        font-size: 21px;
+        display: flex;
+        flex-direction: column;
       }
 
       html body {
@@ -350,7 +354,21 @@
 
     <side-drawer id="drawer"
       ><div class="drawer-sample-container">
-        This is the drawer!
+        <div>This is the drawer!</div>
+        <div style="padding: 21px 0px">
+          You can close the drawer with the escape key or by clicking/tapping
+          outside the drawer.
+        </div>
+        <div style="padding: 21px 0px">
+          Use your browser dev tools to inspect the CSS and see an example of
+          customizing the drawer.
+        </div>
+        <div style="font-size: 16px; margin-top: 21px">
+          The hamburger menu button that's used to open this drawer is the
+          <a href="https://github.com/wes566/wc-menu-button" target="_blank"
+            >wc-menu-button</a
+          >
+        </div>
       </div></side-drawer
     >
 

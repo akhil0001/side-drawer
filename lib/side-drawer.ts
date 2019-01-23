@@ -36,12 +36,10 @@ export class SideDrawer extends HTMLElement {
     }
 
     this.upgradeProperty("open");
-
-    this.addEventListener("keyup", this.handleKeyUp);
   }
 
   disconnectedCallback() {
-    this.removeEventListener("keyup", this.handleKeyUp);
+    document.removeEventListener("keyup", this.handleKeyUp);
   }
 
   // from https://developers.google.com/web/fundamentals/web-components/best-practices#lazy-properties
@@ -88,6 +86,7 @@ export class SideDrawer extends HTMLElement {
       if (!this.open) {
         this.setAttribute("tabindex", "-1");
         this.setAttribute("aria-disabled", "true");
+        document.removeEventListener("keyup", this.handleKeyUp);
         this.dispatchEvent(
           new CustomEvent("close", {
             bubbles: true
@@ -99,6 +98,7 @@ export class SideDrawer extends HTMLElement {
         this.focus({
           preventScroll: true
         });
+        document.addEventListener("keyup", this.handleKeyUp);
         this.dispatchEvent(
           new CustomEvent("open", {
             bubbles: true
